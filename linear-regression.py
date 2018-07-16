@@ -19,7 +19,7 @@ labels = labels.reshape(1000, 1)
 L = tf.placeholder(tf.float32, [None, 1])
 labels += tf.random_normal(shape=labels.shape).eval(session=sess) * 0.01
 
-# 散点图数据可视
+# 散点图数据可视化
 plt.scatter(features[:, 1], labels, 1)
 plt.show()
 
