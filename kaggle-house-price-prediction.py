@@ -4,6 +4,8 @@ import pandas as pd
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
 import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import losses
 
 # 使用pandas读取训练数据和测试数据
 train_data = pd.read_csv('data/train.csv')
@@ -32,17 +34,21 @@ num_features_dim = train_features.shape[1]
 # 定义模型
 model = Sequential()
 # 单层神经网络，线性模型
-model.add(Dense(input_dim=num_features_dim, units=1))
+# glorot_normal-keras中的Xavier正态分布初始化
+model.add(Dense(1, kernel_initializer=keras.initializers.glorot_normal(seed=None)))
 
 # 训练过程
-# 1-cost function:mse;optimizer='Adam'
-model.compile(optimizer=tf.train.AdamOptimizer(0.2),
-              loss='msle',
-              metrics=['crossentropy'])
+batch_size = 64
+num_epochs = 800
+lr = 5
+# 1-cost function:msle;optimizer='Adam'
+model.compile(optimizer=tf.train.AdamOptimizer(lr),
+              loss=losses.mean_squared_logarithmic_error,
+              metrics=['acc'])
 # 2-训练模型
-# batch_size 和epochs可调
-model.fit(train_features, train_labels, batch_size=16, epochs=400)
-
+for epoch in range(num_epochs):
+    history = model.fit(train_features, train_labels, batch_size=batch_size, shuffle=True)
+    print 'epoch ', epoch + 1, 'loss ', history.history['loss']
 # 预测过程
 # 测试数据
 test_features = all_features[num_examples:].values
