@@ -23,7 +23,7 @@ labels = labels + np.random.normal(scale=0.01)
 labels = labels.reshape(1000, 1)
 
 # 读取数据
-batch_size = 100
+batch_size = 10
 
 
 # 每次随机读取十个数据
