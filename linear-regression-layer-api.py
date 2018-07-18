@@ -40,5 +40,5 @@ model.compile(optimizer=keras.optimizers.SGD(lr=learning_rate),
 # batch_size 和epochs可调
 batch_size = 10  # 随即(shuffle=True)读取batch_size个数据用于训练
 for epoch in range(num_epochs):
-    history = model.fit(features, labels, batch_size=batch_size, shuffle=True)
+    history = model.fit(features, labels, batch_size=batch_size, shuffle=True, verbose=0)
     print 'epoch ', epoch + 1, 'loss ', history.history['loss']
