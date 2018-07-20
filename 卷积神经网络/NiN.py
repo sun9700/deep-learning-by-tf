@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# 参数和mxnet完全相同，有一些不稳定，原因待查
+# 参数和mxnet完全相同
 import time
 
 from tensorflow.keras.datasets import mnist
@@ -65,7 +65,4 @@ for epoch in range(num_epochs):
 # # 输出模型图片
 # from keras.utils.vis_utils import plot_model
 # plot_model(net, to_file='model.png', show_shapes=True, show_layer_names=False)
-# # 保存model
-# json_string = model.to_json()
-# open('my_model_architecture.json', 'w').write(json_string)
-# model.save_weights('my_model_weights.h5')
+# net.save('model.h5')

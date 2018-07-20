@@ -50,7 +50,3 @@ for epoch in range(num_epochs):
 # # 输出模型图片
 # from keras.utils.vis_utils import plot_model
 # plot_model(model, to_file='model2.png', show_shapes=True, show_layer_names=False)
-# # 保存model
-# json_string = model.to_json()
-# open('my_model_architecture.json', 'w').write(json_string)
-# model.save_weights('my_model_weights.h5')

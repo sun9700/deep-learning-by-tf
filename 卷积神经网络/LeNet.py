@@ -39,7 +39,7 @@ net.add(layers.Dense(10, activation=activations.softmax))
 
 lr = 0.8
 num_epochs = 5
-batch_size=256
+batch_size = 256
 net.compile(loss='categorical_crossentropy', optimizer=SGD(lr=lr), metrics=['accuracy'])
 for epoch in range(num_epochs):
     start = time.time()
@@ -52,7 +52,3 @@ for epoch in range(num_epochs):
 # # 输出模型图片
 # from keras.utils.vis_utils import plot_model
 # plot_model(net, to_file='model.png', show_shapes=True, show_layer_names=False)
-# # 保存model
-# json_string = model.to_json()
-# open('my_model_architecture.json', 'w').write(json_string)
-# model.save_weights('my_model_weights.h5')
